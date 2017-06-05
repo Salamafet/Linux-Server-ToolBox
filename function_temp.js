@@ -16,7 +16,7 @@ function firewall()
 		response.selectedText ,
 		response.x ,
 		response.y
-	) ;
+	);
 	switch(response.selectedIndex) {
 		case 0:
 			term.brightBlue("Open port list:");

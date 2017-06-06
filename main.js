@@ -10,34 +10,47 @@ term.brightGreen(text_server);
 term.brightYellow("\n" + text_toolbox).brightRed.italic(" " + text_version + "\n\n");
 //##############################
 
-term.cyan( 'Select a function:\n' ) ;
+var methods = {};
+methods.main_menu = function()
+{
+	term.cyan( 'Select a function:\n' ) ;
 
-var items = [
-	'Firewall Settings' ,
-	'SSH Settings' ,
-	'Help Menu',
-	'Exit'
-] ;
+	var items = [
+		'Firewall Settings' ,
+		'SSH Settings' ,
+		'Help Menu',
+		'Exit'
+	] ;
 
-term.gridMenu( items , function( error , response ) {
-	term( '\n' ).eraseLineAfter.green(
-		"#%s selected: %s (%s,%s)\n" ,
-		response.selectedIndex ,
-		response.selectedText ,
-		response.x ,
-		response.y
-	) ;
-	term.clear();
-	if(response.selectedText == "Exit")
-	{
-		term.brightRed("Goodbye !\n\n");
-		process.exit() ;
-	}
-	else
-	{
-		term.brightYellow(mini_text).brightRed.italic(" " + response.selectedText + "\n\n");
+	term.gridMenu( items , function( error , response ) {
+		term( '\n' ).eraseLineAfter.green(
+			"#%s selected: %s (%s,%s)\n" ,
+			response.selectedIndex ,
+			response.selectedText ,
+			response.x ,
+			response.y
+		) ;
+		term.clear();
+		switch(response.selectedIndex) {
+			case 0:
+				header.data.firewall("main");
+				break;
+			case 1:
+				term.brightBlue("SSH Settings");
+				//break;
+			case 2:
+				term.brightBlue("Help Menu");
+				//break;
+			case 3:
+				term.brightRed("Goodbye !\n\n");
+				process.exit();
+			default:
+				term.brightRed.bold("ERROR !");
+				process.exit();
+		}
 
-		process.exit() ;
-	}
+	} ) ;
+}
 
-} ) ;
+exports.data = methods;
+methods.main_menu();

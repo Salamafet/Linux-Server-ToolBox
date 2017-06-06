@@ -39,8 +39,8 @@ methods.main_menu = function()
 				term.brightBlue("SSH Settings");
 				//break;
 			case 2:
-				term.brightBlue("Help Menu");
-				//break;
+				header.data.help();
+				break;
 			case 3:
 				term.brightRed("Goodbye !\n\n");
 				process.exit();

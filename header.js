@@ -36,6 +36,7 @@ methods.firewall = function(action)
 	if(action == "main")
 	{
 		term.brightYellow(mini_text).brightRed.italic(" Firewall Settings\n\n");
+		term.cyan( 'Select a function:\n' ) ;
 		var items = [
 		'List Open Port' ,
 		'Open Port' ,
@@ -69,6 +70,35 @@ methods.firewall = function(action)
 		}
 		} ) ;
 	}
+}
+
+methods.help = function()
+{
+	term.brightYellow(mini_text).brightRed.italic(" Help Menu\n\n");
+	term.brightGreen("Under redaction...\n")
+
+	var items = [
+	'Back to main menu'
+	] ;
+
+	term.gridMenu( items , function( error , response ) {
+	term( '\n' ).eraseLineAfter.green(
+		"#%s selected: %s (%s,%s)\n" ,
+		response.selectedIndex ,
+		response.selectedText ,
+		response.x ,
+		response.y
+	);
+	switch(response.selectedIndex) {
+		case 0:
+
+		default:
+			term.clear();
+			term.brightYellow(mini_text).brightRed.italic(" Main Menu\n\n");
+			main.data.main_menu();
+			break;
+	}
+	} ) ;
 }
 
 exports.data = methods;

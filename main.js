@@ -11,8 +11,13 @@ term.brightYellow("\n" + text_toolbox).brightRed.italic(" " + text_version + "\n
 //##############################
 
 var methods = {};
-methods.main_menu = function()
+methods.main_menu = function(mini_header)
 {
+	if(mini_header == 1)
+	{
+		term.clear();
+		term.brightYellow(mini_text).brightRed.italic(" Main Menu\n\n");
+	}
 	term.cyan( 'Select a function:\n' ) ;
 
 	var items = [
@@ -53,4 +58,4 @@ methods.main_menu = function()
 }
 
 exports.data = methods;
-methods.main_menu();
+methods.main_menu(0);

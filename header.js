@@ -31,11 +31,13 @@ mini_text = `
 
 
 var methods = {};
+
+// FIREWALL Menu
 methods.firewall = function(action)
 {
+	term.brightYellow(mini_text).brightRed.italic(" Firewall Settings\n\n");
 	if(action == "main")
 	{
-		term.brightYellow(mini_text).brightRed.italic(" Firewall Settings\n\n");
 		term.cyan( 'Select a function:\n' ) ;
 		var items = [
 		'List Open Port' ,
@@ -63,19 +65,20 @@ methods.firewall = function(action)
 				term.brightBlue("Enter the port to close: ");
 				break;
 			default:
-				term.clear();
-				term.brightYellow(mini_text).brightRed.italic(" Main Menu\n\n");
-				main.data.main_menu();
+				main.data.main_menu(1);
 				break;
 		}
 		} ) ;
 	}
 }
 
+// HELP Menu
 methods.help = function()
 {
 	term.brightYellow(mini_text).brightRed.italic(" Help Menu\n\n");
-	term.brightGreen("Under redaction...\n")
+	term.brightGreen("Linux").brightCyan(" Server").brightYellow(" Toolbox").styleReset(" an open source project.\n");
+	term.brightMagenta("https://github.com/Salamafet/Linux-Server-ToolBox\n\n");
+	term.brightRed("Under redaction...\n")
 
 	var items = [
 	'Back to main menu'
@@ -93,9 +96,7 @@ methods.help = function()
 		case 0:
 
 		default:
-			term.clear();
-			term.brightYellow(mini_text).brightRed.italic(" Main Menu\n\n");
-			main.data.main_menu();
+			main.data.main_menu(1);
 			break;
 	}
 	} ) ;

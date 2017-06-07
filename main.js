@@ -23,7 +23,8 @@ methods.main_menu = function(mini_header)
 	var items = [
 		'Firewall Settings' ,
 		'SSH Settings' ,
-		'Help Menu',
+		'Reboot Server',
+		'Help',
 		'Exit'
 	] ;
 
@@ -44,9 +45,12 @@ methods.main_menu = function(mini_header)
 				term.brightBlue("SSH Settings");
 				//break;
 			case 2:
-				header.data.help();
+				header.data.reboot();
 				break;
 			case 3:
+				header.data.help();
+				break;
+			case 4:
 				term.brightRed("Goodbye !\n\n");
 				process.exit();
 			default:

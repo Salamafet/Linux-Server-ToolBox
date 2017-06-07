@@ -102,4 +102,29 @@ methods.help = function()
 	} ) ;
 }
 
+//Reboot Menu
+methods.reboot = function()
+{
+	term.brightYellow(mini_text).brightRed.italic(" Reboot Menu\n\n");
+
+	term.brightRed( 'Are your sure to reboot the server ? [Y|n]\n' ) ;
+
+	// Exit on y and ENTER key
+	// Ask again on n
+	term.yesOrNo( { yes: [ 'y' ] , no: [ 'n', 'ENTER' ] } , function( error , result ) {
+
+		if ( result )
+		{
+			term.green( "Rebooting...\n" ) ;
+			const execSync = require('child_process').execSync;
+			code = execSync('reboot');
+			process.exit() ;
+		}
+		else
+		{
+			main.data.main_menu(1);
+		}
+	} ) ;
+}
+
 exports.data = methods;

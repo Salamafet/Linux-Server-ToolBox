@@ -1,2 +1,2 @@
 ## Privew
-![alt text](https://raw.githubusercontent.com/Salamafet/Linux-Server-ToolBox/master/preview.gif)
+![alt text](https://github.com/adam-p/markdown-here/raw/master/preview.gif)
